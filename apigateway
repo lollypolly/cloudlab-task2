@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: 1.0.0
+servers:
+- url: https://d5db4fodn5fujoo17a1o.apigw.yandexcloud.net
+paths:
+  /face/{file}:
+    get:
+      x-yc-apigateway-integration:
+        type: object_storage
+        bucket: itis-2022-2023-vvot19-faces
+        object: '{file}'
+      parameters:
+      - explode: false
+        in: path
+        name: file
+        required: true
+        schema:
+          type: string
+        style: simple
+      summary: Serve static file from Yandex Cloud Object Storage
+  /orig_photo/{file}:
+    get:
+      x-yc-apigateway-integration:
+        type: object_storage
+        bucket: itis-2022-2023-vvot19-photos
+        object: '{file}'
+      parameters:
+      - explode: false
+        in: path
+        name: file
+        required: true
+        schema:
+          type: string
+        style: simple
+      summary: Serve static file from Yandex Cloud Object Storage
+
