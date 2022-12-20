@@ -14,10 +14,10 @@
 И фотография лица сохраняется в новый бакет faces.
 
 + Затем APIGATEWAY на два разных запроса дает картинки из bucket. Функуция с вебхуком для телеграмм бота (vvot19-boot.py)  
-Обработка 3 комманд 
+Обработка 3 комманд   
 /getface   
 /find <name>   
-reply_to_message_with_new_name_for_face
+reply_to_message_with_new_name_for_face  
 с описанным в тз функционалом
   
 ---
