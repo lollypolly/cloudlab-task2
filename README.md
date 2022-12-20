@@ -22,5 +22,5 @@
 ## Установка имени с помошью ответа на запрос **/getface** и поиск фото по имени (**/find <name>**)   
 ![image](https://user-images.githubusercontent.com/55764228/208752913-f4bbe40c-21e9-4268-9f3d-e7690622d4a0.png)
 
-#Ссылка на моего телеграмм бота [https://t.me/vvot19_polik_bot]
+## Ссылка на моего телеграмм бота [https://t.me/vvot19_polik_bot]
 
