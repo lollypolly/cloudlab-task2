@@ -170,8 +170,8 @@ def execute_update_photo(db_id):
 
     ydb_client = session.client('dynamodb',
                                 endpoint_url='https://docapi.serverless.yandexcloud.net/ru-central1/b1g71e95h51okii30p25/etnk5vgmg1pikobolq4o',
-                                aws_access_key_id='YCAJEphKParF3vhc41WfKJGPg',
-                                aws_secret_access_key='YCO-oy9KI53DLggLjj87fWnI7kZcjh7Uoc34501h'
+                                aws_access_key_id='',
+                                aws_secret_access_key=''
                                 )
 
     ydb_client.update_item(TableName='cloudlab',
