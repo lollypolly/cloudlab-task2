@@ -12,7 +12,7 @@ global_id = ""
 global_name = ""
 get_query = None
 find_by_name_sql = None
-driver = ydb.Driver(endpoint='', database='')
+driver = ydb.Driver(endpoint=os.getenv('YDB_ENDPOINT'), database=os.getenv('YDB_DATABASE'))
 driver.wait(fail_fast=True, timeout=10)
 pool = ydb.SessionPool(driver)
 boto_session = None
@@ -170,8 +170,8 @@ def execute_update_photo(db_id):
 
     ydb_client = session.client('dynamodb',
                                 endpoint_url='https://docapi.serverless.yandexcloud.net/ru-central1/b1g71e95h51okii30p25/etnk5vgmg1pikobolq4o',
-                                aws_access_key_id='',
-                                aws_secret_access_key=''
+                                aws_access_key_id=os.getenv('AWS_KEY_ID'),
+                                aws_secret_access_key=os.getenv('AWS_KEY')
                                 )
 
     ydb_client.update_item(TableName='cloudlab',
