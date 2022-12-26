@@ -11,8 +11,8 @@ def handler(event, context):
 
     session = boto3.session.Session()
     s3 = session.client(
-        aws_access_key_id="",
-        aws_secret_access_key="", 
+        aws_access_key_id=os.getenv('AWS_KEY_ID'),
+        aws_secret_access_key=os.getenv('AWS_KEY'), 
         service_name='s3',
         endpoint_url='https://storage.yandexcloud.net'
     )
@@ -34,7 +34,7 @@ def handler(event, context):
                         ), 
                         headers={
                             "Content-Type": "application/json",
-                            "Authorization": "Bearer "  
+                            "Authorization": "Bearer " + os.getenv('IAM_TOKEN')  
                         })
 
     print(response)
@@ -42,8 +42,8 @@ def handler(event, context):
     print(response.json())
 
     queue_client = boto3.client(
-        aws_access_key_id="", #TODO set param
-        aws_secret_access_key="", #TODO set param
+        aws_access_key_id=os.getenv('AWS_KEY_ID'), #TODO set param
+        aws_secret_access_key=os.getenv('AWS_KEY'), #TODO set param
         service_name='sqs',
         endpoint_url='https://message-queue.api.cloud.yandex.net',
         region_name='ru-central1'
