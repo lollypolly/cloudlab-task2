@@ -38,8 +38,8 @@ async def hello(request):
     im.crop((x1, y1, x2, y2)).save(photo, quality=95)
     session = boto3.session.Session(region_name='ru-central1')
     s3 = session.client(
-        aws_access_key_id='',
-        aws_secret_access_key='',
+        aws_access_key_id=os.getenv('AWS_KEY_ID'),
+        aws_secret_access_key=os.getenv('AWS_KEY'),
         service_name='s3',
         endpoint_url='https://storage.yandexcloud.net',
         region_name='ru-central1'
@@ -47,7 +47,7 @@ async def hello(request):
     face = str(request.json['messages'][0]['details']['message']['message_id']) + str(photo)
     s3.upload_file(photo, new_bucket, face)
     #Write to ydb
-    ydb_client = session.client('dynamodb', endpoint_url='https://docapi.serverless.yandexcloud.net/ru-central1/b1g71e95h51okii30p25/etntmph5c15l5ek8vdi0', aws_access_key_id='', aws_secret_access_key='')
+    ydb_client = session.client('dynamodb', endpoint_url='https://docapi.serverless.yandexcloud.net/ru-central1/b1g71e95h51okii30p25/etntmph5c15l5ek8vdi0', aws_access_key_id=os.getenv('AWS_KEY_ID'), aws_secret_access_key=os.getenv('AWS_KEY'))
     ydb_client.put_item(TableName='cloudlab', Item={
         'id': {
             'S': str(request.json['messages'][0]['details']['message']['message_id']) },
